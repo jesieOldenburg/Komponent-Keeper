@@ -1,0 +1,11 @@
+[
+    {
+        "model": "komponentkeeperapp",
+        "pk": 2,
+        "fields":{
+            "user_id": 2,
+            "image": "xdd65d4ddgkghget4",
+            "description":
+        }
+    }
+]
