@@ -1,0 +1,26 @@
+[
+    {
+        "model": "komponentkeeperapp.m_users",
+        "pk": 2,
+        "fields": {
+            "user_id": 2,
+            "username": "RICK-c130",
+            "first_name": "Rick",
+            "last_name": "Sanchez",
+            "email": "rickestRick@gmail.com",
+            "role": "Developer"
+        }
+    },
+    {
+        "model": "komponentkeeperapp.m_users",
+        "pk": 3,
+        "fields": {
+            "user_id": 3,
+            "username": "MortyMania23",
+            "first_name": "Rick",
+            "last_name": "Sanchez",
+            "email": "rickestRick@gmail.com",
+            "role": "Developer"
+        }
+    }
+]
