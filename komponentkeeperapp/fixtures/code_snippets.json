@@ -1,0 +1,22 @@
+[
+    {
+        "model":"komponentkeeperapp.codesnippet",
+        "pk": 1,
+        "fields": {
+            "creator": 1,
+            "snippet_language": "HTML",
+            "code_snippet": "<div><h1>This is a component</h1></div>",
+            "description": "This snippet renders a heading one"
+        }
+    },
+    {
+        "model":"komponentkeeperapp.codesnippet",
+        "pk": 2,
+        "fields": {
+            "creator": 1,
+            "snippet_language": "HTML",
+            "code_snippet": "<div><h2>This is another component</h2></div>",
+            "description": "This renders a heading 2 buddy"
+        }
+    }
+]

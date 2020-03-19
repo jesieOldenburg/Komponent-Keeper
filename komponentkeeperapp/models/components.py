@@ -1,4 +1,5 @@
 from django.db import models
+from .creators import Creator
 
 class Component(models.Model):
     '''
@@ -10,7 +11,7 @@ class Component(models.Model):
         description: this property will contain a description of the component
     '''
 
-    user_id = models.models.ForeignKey("users",  on_delete=models.CASCADE)
+    creator = models.ForeignKey("Creator",  on_delete=models.SET_NULL, null=True)
     image = models.CharField( max_length=150, null=True, default=None)
     description = models.CharField( max_length=200, null=True, default=None)
 
