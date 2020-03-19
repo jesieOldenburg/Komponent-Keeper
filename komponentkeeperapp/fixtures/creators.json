@@ -17,10 +17,10 @@
         "fields": {
             "user": 2,
             "username": "MortyMania23",
-            "first_name": "Rick",
-            "last_name": "Sanchez",
-            "email": "rickestRick@gmail.com",
-            "role": "Developer"
+            "first_name": "Morty",
+            "last_name": "Smith",
+            "email": "AwwGeez@gmail.com",
+            "role": "Designer"
         }
     }
 ]

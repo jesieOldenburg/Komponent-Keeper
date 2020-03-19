@@ -12,6 +12,7 @@ class Component(models.Model):
     '''
 
     creator = models.ForeignKey("Creator",  on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=100, null=True, default=None)
     image = models.CharField( max_length=150, null=True, default=None)
     description = models.CharField( max_length=200, null=True, default=None)
 
