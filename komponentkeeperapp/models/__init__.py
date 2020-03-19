@@ -1,3 +1,3 @@
-from .m_code_snippets import CodeSnippet
-from .m_users import User
-from .m_components import Component
+from .code_snippets import CodeSnippet
+from .creators import Creator
+from .components import Component

@@ -1,4 +1,5 @@
 from django.db import models
+from .creators import Creator
 
 class CodeSnippet(models.Model):
     '''
@@ -11,7 +12,7 @@ class CodeSnippet(models.Model):
         description: This will contain any notes about the snippet
     '''
 
-    user_id = models.models.ForeignKey("users",  on_delete=models.CASCADE)
+    creator = models.ForeignKey("Creator",  on_delete=models.SET_NULL, null=True)
     snippet_language = models.CharField(max_length=50, default=None, null=True)
     code_snippet = models.CharField( max_length=500)
     description = models.CharField(max_length=200)

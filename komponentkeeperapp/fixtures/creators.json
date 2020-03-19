@@ -1,9 +1,9 @@
 [
     {
-        "model": "komponentkeeperapp.m_users",
-        "pk": 2,
+        "model": "komponentkeeperapp.creator",
+        "pk": 1,
         "fields": {
-            "user_id": 2,
+            "user": 1,
             "username": "RICK-c130",
             "first_name": "Rick",
             "last_name": "Sanchez",
@@ -12,10 +12,10 @@
         }
     },
     {
-        "model": "komponentkeeperapp.m_users",
-        "pk": 3,
+        "model": "komponentkeeperapp.creator",
+        "pk": 2,
         "fields": {
-            "user_id": 3,
+            "user": 2,
             "username": "MortyMania23",
             "first_name": "Rick",
             "last_name": "Sanchez",
