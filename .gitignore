@@ -23,3 +23,6 @@ media/
 *.pid
 # django migrations
 migrationskomponentKeeperEnv
+komponentkeeper/__pycache__/urls.cpython-36.pyc
+komponentkeeper/__pycache__/settings.cpython-36.pyc
+migrations
