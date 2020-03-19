@@ -1,11 +1,21 @@
 [
     {
-        "model": "komponentkeeperapp",
+        "model": "komponentkeeperapp.component",
+        "pk": 1,
+        "fields":{
+            "creator": 1,
+            "image": "xdd65d4ddgkghget4",
+            "description": "A navbar based on bootstrap"
+        }
+    },
+    {
+        "model": "komponentkeeperapp.component",
         "pk": 2,
         "fields":{
-            "user_id": 2,
+            "creator": 2,
             "image": "xdd65d4ddgkghget4",
-            "description":
+            "description": "A wicked sick button"
         }
     }
+    
 ]
