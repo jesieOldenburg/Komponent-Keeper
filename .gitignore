@@ -25,7 +25,4 @@ media/
 migrationskomponentKeeperEnv
 komponentkeeper/__pycache__/urls.cpython-36.pyc
 komponentkeeper/__pycache__/settings.cpython-36.pyc
-komponentkeeperapp/migrations/0001_initial.py
-komponentkeeperapp/migrations/0002_auto_20200319_0040.py
-komponentkeeperapp/migrations/0003_auto_20200319_0056.py
-komponentkeeperapp/migrations/0004_auto_20200319_0058.py
+migrations
