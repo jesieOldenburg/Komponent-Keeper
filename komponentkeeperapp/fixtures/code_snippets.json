@@ -13,7 +13,7 @@
         "model":"komponentkeeperapp.codesnippet",
         "pk": 2,
         "fields": {
-            "creator": 1,
+            "creator": 2,
             "snippet_language": "HTML",
             "code_snippet": "<div><h2>This is another component</h2></div>",
             "description": "This renders a heading 2 buddy"

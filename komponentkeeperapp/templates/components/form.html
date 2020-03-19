@@ -1,0 +1,15 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Component Form</title> 
+</head> 
+<body> 
+    {# multipart form data specifies the encoding format of the form and allows entire files to be uploaded #}
+    <form method = "post" enctype="multipart/form-data"> 
+        {% csrf_token %} 
+        {{ form.as_p }} 
+        <button type="submit">Upload</button> 
+    </form> 
+</body> 
+</html> 
