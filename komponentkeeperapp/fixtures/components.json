@@ -3,6 +3,7 @@
         "model": "komponentkeeperapp.component",
         "pk": 1,
         "fields":{
+            "name": "button one",
             "creator": 1,
             "image": "xdd65d4ddgkghget4",
             "description": "A navbar based on bootstrap"
@@ -12,6 +13,7 @@
         "model": "komponentkeeperapp.component",
         "pk": 2,
         "fields":{
+            "name": "button two",
             "creator": 2,
             "image": "xdd65d4ddgkghget4",
             "description": "A wicked sick button"

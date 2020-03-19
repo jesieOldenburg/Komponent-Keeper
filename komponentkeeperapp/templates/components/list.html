@@ -1,0 +1,26 @@
+{% load static %}
+{# fields to display component. name, image, description, creator. first_name, last_name#}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Komponent Keeper</title>
+  </head>
+  <body>
+
+    <h1>Components</h1>
+
+    {% for component in all_components %}
+    <div class="container">
+        <div class="component-card">
+            <h3 class="card-heading">{{component.name}}</h3>
+            <div class="img-container">
+                <img src="{% static "images/test_button.jpeg" %}" alt="A component" class="component-img">
+            </div>
+            <p class="created-by">{{component.creator.first_name}}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+  </body>
+</html>
