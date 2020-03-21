@@ -1,23 +1,25 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
-from komponentkeeperapp.models import Component
+from komponentkeeperapp.models import CodeSnippet
 # from ...forms import AddComponentForm
 # from django.contrib.auth.decorators import login_required
 
-def components_list(request):
+def snippets_list(request):
     # Check if the request made is a GET request
     if request.method == 'GET':
         # Assign all of the requested items to a variable
-        all_components = Component.objects.all()
-        
+        all_snippets = CodeSnippet.objects.all()
+        print(all_snippets)
         # Then store each of the requested resource's values in a variable named after the keys in the model
         creator = request.GET.get('creator')
-        image = request.GET.get('image')
+        snippet = request.GET.get('code_snippet')
+        # print(CodeSnippet.objects.all())
         description = request.GET.get('description')
-        
-        template = 'components/list.html'
+        snippet_lang = request.GET.get('snippet_language')
+
+        template = 'code_snippets/list.html'
         context = {
-            'all_components': all_components
+            'all_snippets': all_snippets
         }
 
         # return the render method passing in request, template and context as params

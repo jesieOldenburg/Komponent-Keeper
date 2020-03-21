@@ -14,7 +14,7 @@ class CodeSnippet(models.Model):
 
     creator = models.ForeignKey("Creator",  on_delete=models.SET_NULL, null=True)
     snippet_language = models.CharField(max_length=50, default=None, null=True)
-    code_snippet = models.CharField( max_length=500)
+    code_snippet = models.TextField(max_length=500, null=True, blank=True)
     description = models.CharField(max_length=200)
     
     class Meta:
@@ -23,3 +23,6 @@ class CodeSnippet(models.Model):
 
     def get_absolute_url(self):
         return reverse("CodeSnippet_details", kwargs={"pk": self.pk})
+    
+    def __str__(self):
+        return f'creator :: {self.creator}'

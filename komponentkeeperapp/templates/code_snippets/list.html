@@ -1,0 +1,28 @@
+{# fields to display code_snippet. snippet, creator, snippet_language, description :: creator. first_name, last_name #}
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Komponent Keeper</title>
+  </head>
+  <body>
+
+    <h1>Code Snippets</h1>
+
+    {% for s in all_snippets %}
+    <div class="container">
+        <div class="snippet-card">
+            <h3 class="card-heading">{{s.snippet_language}}</h3>
+            <div class="snippet-container">
+                <p>{{s.code_snippet}}</p>
+            </div>
+            <p class="created-by">{{s.creator.first_name}} {{s.creator.last_name}}</p>
+            <p class="snippet-description">{{s.description}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+  </body>
+</html>
