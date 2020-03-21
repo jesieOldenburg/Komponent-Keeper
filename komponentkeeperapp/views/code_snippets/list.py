@@ -1,9 +1,10 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
 from komponentkeeperapp.models import CodeSnippet
+from django.contrib.auth.decorators import login_required
 # from ...forms import AddComponentForm
-# from django.contrib.auth.decorators import login_required
 
+@login_required
 def snippets_list(request):
     # Check if the request made is a GET request
     if request.method == 'GET':

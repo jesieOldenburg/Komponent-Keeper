@@ -1,9 +1,10 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
 from komponentkeeperapp.models import Component
+from django.contrib.auth.decorators import login_required
 # from ...forms import AddComponentForm
-# from django.contrib.auth.decorators import login_required
 
+@login_required
 def components_list(request):
     # Check if the request made is a GET request
     if request.method == 'GET':
@@ -11,6 +12,7 @@ def components_list(request):
         all_components = Component.objects.all()
         
         # Then store each of the requested resource's values in a variable named after the keys in the model
+        name = request.GET.get('name')
         creator = request.GET.get('creator')
         image = request.GET.get('image')
         description = request.GET.get('description')
@@ -24,6 +26,27 @@ def components_list(request):
         return render(request, template, context)
         
         pass
+    elif request.method == 'POST':
+        form_data = request.POST
+        
+        new_component = Component(
+            name = form_data['name'],
+            image = form_data['image'],
+            description = form_data['description']
+        )
+
+        print(new_component.name)
+        new_component.save()
+        return redirect(reverse('komponentkeeperapp:components'))
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 # def component_image_upload(request):
 #     # Post an image to the database

@@ -21,5 +21,5 @@ from komponentkeeperapp.models import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('komponentkeeperapp.urls'))
+    path('', include('komponentkeeperapp.urls')),
 ]# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
