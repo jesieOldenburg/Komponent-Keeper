@@ -15,12 +15,7 @@ def components_list(request):
         image = request.GET.get('image')
         description = request.GET.get('description')
         
-        # TODO create a conditional statement to filter based on a not none condition that will reassign the value of all_components using all_components.filter(all_components__contains=creator) to filter based on creator
-        
-        # TODO assign the template path to the variable named template
         template = 'components/list.html'
-        
-        # TODO assign a value to the context dict i.e. 'all_components': all_components
         context = {
             'all_components': all_components
         }

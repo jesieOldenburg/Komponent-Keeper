@@ -13,10 +13,11 @@ def snippets_list(request):
         # Then store each of the requested resource's values in a variable named after the keys in the model
         creator = request.GET.get('creator')
         snippet = request.GET.get('code_snippet')
-        print(snippet)
+        # print(CodeSnippet.objects.all())
         description = request.GET.get('description')
         snippet_lang = request.GET.get('snippet_language')
 
+        template = 'code_snippets/list.html'
         context = {
             'all_snippets': all_snippets
         }
