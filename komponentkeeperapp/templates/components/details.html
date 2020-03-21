@@ -1,22 +1,23 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 {# fields to display component. name, image, description, creator. first_name, last_name#}
-{% block content %}
-    <h1>Components</h1>
-    <a href="{% url 'komponentkeeperapp:component_form' %}">Add Komponent</a>
 
-    {% for component in all_components %}
+{% block content %}
+    <h1>Component</h1>
+
     <div class="container">
         <div class="component-card">
             <h3 class="card-heading">{{component.name}}</h3>
             <div class="img-container">
                 <img src="{% static "images/test_button.jpeg" %}" alt="A component" class="component-img">
             </div>
-            <p class="created-by">{{component.creator.first_name}}</p>
-            <a href="{% url 'komponentkeeperapp:component' component.id %}"> View Details</a>
-            <input type="button" value="View Details" href="{% url 'komponentkeeperapp:component' component.id %}">
+            <p class="created-by">{{component.creator.first_name}} {{component.creator.last_name}}</p>
         </div>
     </div>
-    {% endfor %}
 
+    <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="actual_method" value="DELETE">
+        <button>Delete</button>
+    </form>
     {% endblock content %}
