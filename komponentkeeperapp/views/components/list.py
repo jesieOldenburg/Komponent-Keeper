@@ -30,6 +30,7 @@ def components_list(request):
         form_data = request.POST
         
         new_component = Component(
+            creator_id = request.user.id,
             name = form_data['name'],
             image = form_data['image'],
             description = form_data['description']
