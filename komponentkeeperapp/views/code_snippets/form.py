@@ -2,7 +2,7 @@ import sqlite3
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from komponentkeeperapp.models import CodeSnippet
-
+from .details import get_snippet
 
 def get_snippets():
     all_snippets = CodeSnippet.objects.all()
@@ -22,11 +22,11 @@ def snippet_form(request):
 def edit_snippet_form(request, code_snippet_id):
 
     if request.method == 'GET':
-        component = get_component(component_id)
+        snippet = get_snippet(code_snippet_id)
 
-        template = 'components/form.html'
+        template = 'code_snippets/form.html'
         context = {
-            'component': component,
+            'snippet': snippet,
         }
 
         return render(request, template, context)

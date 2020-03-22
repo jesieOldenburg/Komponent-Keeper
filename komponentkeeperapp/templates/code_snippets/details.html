@@ -17,6 +17,10 @@
         </div>
     </div>
 
+    <form action="{% url 'komponentkeeperapp:edit_snippet_form' snippet.id %}" method="GET">
+        {% csrf_token %}
+        <button>Edit</button>
+    </form>
 
     <form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="POST">
         {% csrf_token %}

@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 # from ...forms import AddComponentForm
 
 def get_snippet(code_snippet_id):
-    print('\n ID ++++++++', code_snippet_id)
     return CodeSnippet.objects.get(pk=code_snippet_id)
     pass
 
@@ -22,16 +21,16 @@ def snippet_details(request, code_snippet_id):
     elif request.method == 'POST':
         form_data = request.POST
 
-        # if the POST request is for editing a book...
+        # if the POST request is for editing a snippet...
         if ( "actual_method" in form_data and form_data["actual_method"] == "PUT" ):
 
             # get a the snippet to edit
             snippet_to_edit = CodeSnippet.objects.get(pk=code_snippet_id)
 
             # store the values to edit
-            snippet_to_edit.language = form_data['language']
+            snippet_to_edit.snippet_language = form_data['snippet-language']
             snippet_to_edit.description = form_data['description']
-            snippet_to_edit.snippet = form_data['snippet']
+            snippet_to_edit.code_snippet = form_data['snippet-input']
 
             # and save the changes to the database
             snippet_to_edit.save()

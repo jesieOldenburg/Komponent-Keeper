@@ -25,12 +25,13 @@ def snippets_list(request):
         # return the render method passing in request, template and context as params
         return render(request, template, context)
         
-        pass
-    
+    # Create a New Snippet
     elif request.method == 'POST':
+
         form_data = request.POST
         
         new_snippet = CodeSnippet(
+            creator_id = request.user.id,
             snippet_language = form_data['snippet-language'],
             code_snippet = form_data['snippet-input'],
             description = form_data['description']
