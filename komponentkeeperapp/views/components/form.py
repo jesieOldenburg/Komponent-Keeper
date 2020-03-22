@@ -2,7 +2,7 @@ import sqlite3
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from komponentkeeperapp.models import Component
-
+from .details import get_component
 
 def get_components():
     all_components = Component.objects.all()

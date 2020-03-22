@@ -13,8 +13,7 @@
                 <img src="{% static "images/test_button.jpeg" %}" alt="A component" class="component-img">
             </div>
             <p class="created-by">{{component.creator.first_name}}</p>
-            <a href="{% url 'komponentkeeperapp:component' component.id %}"> View Details</a>
-            <input type="button" value="View Details" href="{% url 'komponentkeeperapp:component' component.id %}">
+            <a href="{% url 'komponentkeeperapp:component' component.id %}">View Details</a>
         </div>
     </div>
     {% endfor %}

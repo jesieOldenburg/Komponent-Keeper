@@ -3,29 +3,29 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Add a Komponent</title>
+    <title>Add a snippet</title>
   </head>
   
   <body>
-    <h1>Add a Komponent</h1>
-    <form action="{% url 'komponentkeeperapp:components' %}" method="post">
+    <h1>Add a Snippet</h1>
+    <form action="{% url 'komponentkeeperapp:snippets' %}" method="post">
       {% csrf_token %}
 
       <fieldset>
-          <label for="name">Name your Komponent</label>
-          <input id="name" type="textarea" name="name">
+          <label for="snippet-language">Snippet Language</label>
+          <input id="snippet-language" type="text" name="snippet-language">
       </fieldset>
       
       <fieldset>
           <label for="description">Leave a small description</label>
-          <input id="description" type="textarea" name="description">
+          <textarea id="description" rows="5" cols="35" name="description"></textarea>
       </fieldset>
 
       <fieldset>
-          <label for="img">Select image:</label>
-          <input type="file" id="img" name="img" accept="image/*">
-          <input type="submit">
+          <label for="snippet-input">Snippet</label>
+          <textarea id="snippet-input" rows="30" cols="75" name="snippet-input"></textarea>
       </fieldset>
+
 
       <input type="submit" value="Add It" />
     </form>
