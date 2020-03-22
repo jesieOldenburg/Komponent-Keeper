@@ -1,4 +1,4 @@
-# # Komponent Keeper
+# Komponent Keeper
 An app for designers and developers to track design assets and their associated code. Created with the intent on solving the problem of design handoff between UI/UX designers and developers.
 
 ## Installation
