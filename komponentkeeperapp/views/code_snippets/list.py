@@ -10,7 +10,6 @@ def snippets_list(request):
     if request.method == 'GET':
         # Assign all of the requested items to a variable
         all_snippets = CodeSnippet.objects.all()
-        print(all_snippets)
         # Then store each of the requested resource's values in a variable named after the keys in the model
         creator = request.GET.get('creator')
         snippet = request.GET.get('code_snippet')
@@ -26,7 +25,20 @@ def snippets_list(request):
         # return the render method passing in request, template and context as params
         return render(request, template, context)
         
-        pass
+    # Create a New Snippet
+    elif request.method == 'POST':
+
+        form_data = request.POST
+        
+        new_snippet = CodeSnippet(
+            creator_id = request.user.id,
+            snippet_language = form_data['snippet-language'],
+            code_snippet = form_data['snippet-input'],
+            description = form_data['description']
+        )
+
+        new_snippet.save()
+        return redirect(reverse('komponentkeeperapp:snippets'))
     
 # def component_image_upload(request):
 #     # Post an image to the database

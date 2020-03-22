@@ -15,6 +15,9 @@
         </div>
     </div>
 
+
+    
+
     <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
         {% csrf_token %}
         <input type="hidden" name="actual_method" value="DELETE">

@@ -1,10 +1,11 @@
 {% extends 'shared/base.html' %}
 {# fields to display code_snippet. snippet, creator, snippet_language, description :: creator. first_name, last_name #}
+
 {% load static %}
+
 {% block content %}
     <h1>Code Snippets</h1>
-    <a href="{% url 'komponentkeeperapp:snippet_form' %}" >Add a Snippet</a>
-    {% for snippet in all_snippets %}
+
     <div class="container">
         <div class="snippet-card">
             <h3 class="card-heading">{{snippet.snippet_language}}</h3>
@@ -13,10 +14,20 @@
             </div>
             <p class="created-by">{{snippet.creator.first_name}} {{snippet.creator.last_name}}</p>
             <p class="snippet-description">{{snippet.description}}</p>
-            
-            <a href="{% url 'komponentkeeperapp:snippet' snippet.id %}">View Details</a>
         </div>
     </div>
-    {% endfor %}
+
+    <form action="{% url 'komponentkeeperapp:edit_snippet_form' snippet.id %}" method="GET">
+        {% csrf_token %}
+        <button>Edit</button>
+    </form>
+
+    <form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="actual_method" value="DELETE">
+        <button>Delete</button>
+    </form> 
+
+
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     {% endblock content %}

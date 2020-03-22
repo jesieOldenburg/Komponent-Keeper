@@ -21,7 +21,7 @@ def component_details(request, component_id):
     elif request.method == 'POST':
         form_data = request.POST
 
-        # if the POST request is for editing a book...
+        # if the POST request is for editing a component...
         if ( "actual_method" in form_data and form_data["actual_method"] == "PUT" ):
 
             # get a the component to edit
