@@ -9,26 +9,40 @@ def get_component(component_id):
     pass
 
 def get_snippet(component_id):
-    return CodeSnippet.objects.get(id=component_id)
+    if CodeSnippet.objects.filter(id=component_id).exists():
+        return CodeSnippet.objects.get(id=component_id)
+    else:
+        return None
 
 
 @login_required
 def component_details(request, component_id):
+    # If there is no component id in code snippet
+    
     if request.method == 'GET':
+        if get_snippet(component_id) == True:
+            snippet = get_snippet(component_id)
         # get snippet details
-        snippet = get_snippet(component_id)
-        snippet_language = snippet.snippet_language
-        code_snippet = snippet.code_snippet
-        description = snippet.description
-        # print('SNIPPET============>>>>>', snippet_desc)
+            snippet_language = snippet.snippet_language
+            code_snippet = snippet.code_snippet
+            description = snippet.description
+            # print('SNIPPET============>>>>>', snippet_desc)
 
-        component = get_component(component_id)
-        template = 'components/details.html'
-        context = {
-            'component': component,
-            'snippet': snippet
-        }
-        return render(request, template, context)
+            component = get_component(component_id)
+            template = 'components/details.html'
+            context = {
+                'component': component,
+                'snippet': snippet
+            }
+            return render(request, template, context)
+        
+        elif get_snippet(component_id) == None:
+            component = get_component(component_id)
+            template = 'components/details.html'
+            context = {
+                'component': component
+            }
+            return render(request, template, context)
 
     elif request.method == 'POST':
         form_data = request.POST
