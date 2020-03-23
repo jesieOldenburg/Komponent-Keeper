@@ -1,8 +1,10 @@
-# from django.forms import form
-# from .models import *
+from django.forms import ModelForm
+from .models.components import Component
 
-# class AddComponentForm(forms.ModelForm):
-
-#     class Meta:
-#         model = Component
-#         fields = ['name', 'image', 'description']
+class AddImageForm(ModelForm):
+    class Meta:
+        model = Component
+        fields = ['name', 'image', 'description']
+    # name = forms.TextInput()
+    # image = forms.ImageField()
+    # description = forms.Textarea()

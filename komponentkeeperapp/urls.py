@@ -8,7 +8,9 @@ urlpatterns = [
     path('home', home, name='home'),
     
     path('components/', components_list, name='components'),
-    path('components/form', component_form, name='component_form'),
+    path('components/form', upload_component, name='upload_component'),
+    path('success', success, name='success'), 
+    
     path('components/<int:component_id>/', component_details, name='component'),
     
     path('snippets/', snippets_list, name='snippets'),

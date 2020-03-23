@@ -1,8 +1,7 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
-from komponentkeeperapp.models import Component
 from django.contrib.auth.decorators import login_required
-# from ...forms import AddComponentForm
+from komponentkeeperapp.models import Component
 
 @login_required
 def components_list(request):
@@ -15,6 +14,7 @@ def components_list(request):
         name = request.GET.get('name')
         creator = request.GET.get('creator')
         image = request.GET.get('image')
+        print(image)
         description = request.GET.get('description')
         
         template = 'components/list.html'
@@ -32,7 +32,7 @@ def components_list(request):
         new_component = Component(
             creator_id = request.user.id,
             name = form_data['name'],
-            image = form_data['image'],
+            image = upload_component(request),
             description = form_data['description']
         )
 
