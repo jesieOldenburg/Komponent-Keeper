@@ -1,5 +1,20 @@
 {% load static %}
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Upload Component</title> 
+</head> 
+<body> 
+    <form method = "post" enctype="multipart/form-data"> 
+        {% csrf_token %} 
+        {{ form.as_p}} 
+        <button type="submit">Upload</button> 
+    </form> 
+</body> 
+</html> 
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -8,7 +23,7 @@
   
   <body>
     <h1>Add a Komponent</h1>
-    <form action="{% url 'komponentkeeperapp:components' %}" method="post">
+    <form action="{% url 'komponentkeeperapp:components' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
 
       <fieldset>
@@ -21,16 +36,17 @@
           <input id="description" type="textarea" name="description">
       </fieldset>
 
-      <fieldset>
-          <label for="img">Select image:</label>
-          <input type="file" id="img" name="img" accept="image/*">
-          <input type="submit">
-      </fieldset>
+     <fieldset>
+        <label for="img">Select image:</label>
+        <input type="file" id="img" name="img" accept="image/*">
+        <input type="submit">
+     </fieldset>
+
 
       <input type="submit" value="Add It" />
     </form>
   </body>
-</html>
+</html> -->
 
 
 

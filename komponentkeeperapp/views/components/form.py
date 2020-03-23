@@ -8,6 +8,7 @@ def get_components():
     all_components = Component.objects.all()
 
 @login_required
+
 def component_form(request):
     if request.method == 'GET':
         components = get_components()

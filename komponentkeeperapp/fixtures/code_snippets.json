@@ -4,6 +4,7 @@
         "pk": 1,
         "fields": {
             "creator": 1,
+            "component_id": 1,
             "snippet_language": "HTML",
             "code_snippet": "<div><h1>This is a component</h1></div>",
             "description": "This snippet renders a heading one"
@@ -14,6 +15,7 @@
         "pk": 2,
         "fields": {
             "creator": 2,
+            "component_id": 2,
             "snippet_language": "HTML",
             "code_snippet": "<div><h2>This is another component</h2></div>",
             "description": "This renders a heading 2 buddy"

@@ -3,14 +3,14 @@
 {# fields to display component. name, image, description, creator. first_name, last_name#}
 {% block content %}
     <h1>Components</h1>
-    <a href="{% url 'komponentkeeperapp:component_form' %}">Add Komponent</a>
+    <a href="{% url 'komponentkeeperapp:upload_component' %}">Add Komponent</a>
 
     {% for component in all_components %}
     <div class="container">
         <div class="component-card">
             <h3 class="card-heading">{{component.name}}</h3>
             <div class="img-container">
-                <img src="{% static "images/test_button.jpeg" %}" alt="A component" class="component-img">
+                <img src="{{component.image}}" alt="A component" class="component-img">
             </div>
             <p class="created-by">{{component.creator.first_name}}</p>
             <a href="{% url 'komponentkeeperapp:component' component.id %}">View Details</a>

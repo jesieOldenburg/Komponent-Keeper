@@ -6,7 +6,8 @@ class Component(models.Model):
     description: This class creates a component and its associated data
     author: Jesie Oldenburg
     properties:
-        user_id: This will contain user id's to see which user created it
+        creator: This will contain user id's to see which user created it
+        name: this will contain the name of the component
         image: This property will contain a path to an image file
         description: this property will contain a description of the component
     '''
