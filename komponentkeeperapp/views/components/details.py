@@ -1,6 +1,6 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
-from komponentkeeperapp.models import Component
+from komponentkeeperapp.models import Component, CodeSnippet
 from django.contrib.auth.decorators import login_required
 # from ...forms import AddComponentForm
 
@@ -8,13 +8,25 @@ def get_component(component_id):
     return Component.objects.get(pk=component_id)
     pass
 
+def get_snippet(component_id):
+    return CodeSnippet.objects.get(id=component_id)
+
+
 @login_required
 def component_details(request, component_id):
     if request.method == 'GET':
+        # get snippet details
+        snippet = get_snippet(component_id)
+        snippet_language = snippet.snippet_language
+        code_snippet = snippet.code_snippet
+        description = snippet.description
+        # print('SNIPPET============>>>>>', snippet_desc)
+
         component = get_component(component_id)
         template = 'components/details.html'
         context = {
-            'component': component
+            'component': component,
+            'snippet': snippet
         }
         return render(request, template, context)
 

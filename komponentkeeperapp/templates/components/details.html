@@ -6,6 +6,7 @@
     <h1>Component</h1>
 
     <div class="container">
+        
         <div class="component-card">
             <h3 class="card-heading">{{component.name}}</h3>
             <div class="img-container">
@@ -13,10 +14,16 @@
             </div>
             <p class="created-by">{{component.creator.first_name}} {{component.creator.last_name}}</p>
         </div>
-    </div>
-
-
+        
+        <div class="snippet-card">
+            <h3 class="snippet-card-heading">{{snippet.snippet_language}}</h3>
+                <div class="snippet-container">
+                    <p class="code-snippet">{{snippet.code_snippet}}</p>
+                </div>
+                <p class="snippet-desc">{{snippet.description}}</p>
+        </div>
     
+    </div>
 
     <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
         {% csrf_token %}
