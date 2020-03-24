@@ -1,22 +1,53 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
-from komponentkeeperapp.models import Component
+from komponentkeeperapp.models import Component, CodeSnippet
 from django.contrib.auth.decorators import login_required
-# from ...forms import AddComponentForm
 
 def get_component(component_id):
     return Component.objects.get(pk=component_id)
     pass
 
+def get_snippet(component_id):
+    # print('SNIPPET ==>', snippet.id)
+    if CodeSnippet.objects.filter(component_id=component_id).exists(): # This evaluates to True
+        return CodeSnippet.objects.get(id=component_id) # And this returns
+    else:
+        return None
+
 @login_required
 def component_details(request, component_id):
+    # If there is no component id in code snippet
+    print('were in the details')
     if request.method == 'GET':
-        component = get_component(component_id)
-        template = 'components/details.html'
-        context = {
-            'component': component
-        }
-        return render(request, template, context)
+        CODE_TEST = None
+        CODE_TEST = get_snippet(component_id)
+        print('GET ----____----___')
+        if CODE_TEST is not None: # Why is this not evaluating to True? 
+
+            print('Inside True Condition')
+            
+            snippet = get_snippet(component_id)
+            # get snippet details
+            snippet_language = snippet.snippet_language
+            code_snippet = snippet.code_snippet
+            description = snippet.description
+            print('SNIPPET============>>>>>', code_snippet)
+
+            component = get_component(component_id)
+            template = 'components/details.html'
+            context = {
+                'component': component,
+                'snippet': snippet
+            }
+            return render(request, template, context)
+        
+        elif get_snippet(component_id) == None:
+            component = get_component(component_id)
+            template = 'components/details.html'
+            context = {
+                'component': component
+            }
+            return render(request, template, context)
 
     elif request.method == 'POST':
         form_data = request.POST

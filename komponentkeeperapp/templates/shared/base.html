@@ -6,8 +6,7 @@
     <meta charset="utf-8">
     <title>Komponent Keeper</title>
 
-    <!-- <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" /> -->
-
+    <link rel="stylesheet" href="{% static 'styles/codeblocks.css' %}" type="text/css" media="screen" />
     {% block css %}
     {% endblock %}
 </head>
@@ -32,6 +31,7 @@
     {% endblock %}
 
     {% block scripts %}
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     {% endblock scripts %}
 
 </body>

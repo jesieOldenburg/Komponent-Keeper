@@ -3,24 +3,39 @@
 {# fields to display component. name, image, description, creator. first_name, last_name#}
 
 {% block content %}
-    <h1>Component</h1>
+    <!-- <h1>Component</h1>
 
     <div class="container">
+         -->
         <div class="component-card">
             <h3 class="card-heading">{{component.name}}</h3>
             <div class="img-container">
-                <img src="{% static "images/test_button.jpeg" %}" alt="A component" class="component-img">
+                <img src="{{component.image.url}}" alt="A component" class="component-img">
             </div>
             <p class="created-by">{{component.creator.first_name}} {{component.creator.last_name}}</p>
         </div>
+        
+        <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="DELETE">
+            <button>Delete Komponent</button>
+        </form>
+
+        <form action="{% url 'komponentkeeperapp:edit_component_form' component.id %}" method="GET">
+            {% csrf_token %}
+            <button>Edit</button>
+        </form>
+
+        <div class="snippet-card">
+            <h3 class="snippet-card-heading">{{snippet.snippet_language}}</h3>
+                <pre class="prettyprint lang-{{snippet.snippet_language|lower}}">
+                    <p class="pre-snippet">{{snippet.code_snippet}}</p>
+                </pre>
+                <p class="snippet-desc">{{snippet.description}}</p>
+        </div>
+    
     </div>
 
 
-    
 
-    <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" name="actual_method" value="DELETE">
-        <button>Delete</button>
-    </form>
     {% endblock content %}

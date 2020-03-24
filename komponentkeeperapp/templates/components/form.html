@@ -1,69 +1,22 @@
 {% load static %}
+<!-- TODO: Add conditional to render post or put methods and buttons -->
 
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <title>Upload Component</title> 
-</head> 
-<body> 
-    <form method = "post" enctype="multipart/form-data"> 
-        {% csrf_token %} 
-        {{ form.as_p}} 
-        <button type="submit">Upload</button> 
-    </form> 
-</body> 
-</html> 
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Add a Komponent</title>
-  </head>
-  
-  <body>
-    <h1>Add a Komponent</h1>
-    <form action="{% url 'komponentkeeperapp:components' %}" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
+    
+{% if component.id is not None %}
+<form action="{% url 'komponentkeeperapp:component' component.id %}" method="post">
+{% else %}
+<form action="{% url 'komponentkeeperapp:components' %}" method="post">
+{% endif %}
+<!-- <form method = "post" enctype="multipart/form-data">  -->
+    {% csrf_token %} 
+    {{ form.as_p}} 
 
-      <fieldset>
-          <label for="name">Name your Komponent</label>
-          <input id="name" type="textarea" name="name">
-      </fieldset>
-      
-      <fieldset>
-          <label for="description">Leave a small description</label>
-          <input id="description" type="textarea" name="description">
-      </fieldset>
+    {% if component.id is not None %}
+    <input type="hidden" value="POST">
+    <input type="submit" value="Update" />
+    {% else %}
+    <input type="submit" value="Create" />
+    {% endif %}
+    <!-- <button type="submit">Upload</button>  -->
 
-     <fieldset>
-        <label for="img">Select image:</label>
-        <input type="file" id="img" name="img" accept="image/*">
-        <input type="submit">
-     </fieldset>
-
-
-      <input type="submit" value="Add It" />
-    </form>
-  </body>
-</html> -->
-
-
-
-
-
-<!-- <!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <title>Component Form</title> 
-</head> 
-<body> 
-    {# multipart form data specifies the encoding format of the form and allows entire files to be uploaded #}
-    <form method = "post" enctype="multipart/form-data"> 
-        {% csrf_token %} 
-        {{ form.as_p }} 
-        <button type="submit">Upload</button> 
-    </form> 
-</body> 
-</html>  -->
+</form> 

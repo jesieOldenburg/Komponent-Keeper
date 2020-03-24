@@ -1,0 +1,10 @@
+.billoard-container {
+    height: 75%;
+    width: 100%;
+    background-color: aqua;
+}
+
+.billoard-header{
+    font-family: 'Helvetica-Neue' sans-serif;
+    font-size: 68pt;
+}
