@@ -7,21 +7,22 @@
     <title>Komponent Keeper</title>
 
     <link rel="stylesheet" href="{% static 'styles/codeblocks.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" type="text/css" media="screen" />
     {% block css %}
     {% endblock %}
 </head>
 
 <body>
-    <nav id="site-nav">
-        <ol class="navList">
-            <li class="navList__route"><a href="{% url 'komponentkeeperapp:home' %}">Home</a></li>
-            <li class="navList__route"><a href="{% url 'komponentkeeperapp:components' %}">Components</a></li>
-            <li class="navList__route"><a href="{% url 'komponentkeeperapp:snippets' %}">Snippets</a></li>
+    <nav id="navbar">
+        <ol class="nav-list">
+            <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:home' %}">Home</a></li>
+            <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:components' %}">Components</a></li>
+            <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:snippets' %}">Snippets</a></li>
 
             {% if user.is_authenticated %}
-                <li class="navList__route"><a href="{% url 'komponentkeeperapp:logout' %}">Logout</a></li>  
+                <li class="nav-list-item"><a href="{% url 'komponentkeeperapp:logout' %}">Logout</a></li>  
             {% else %}
-                <li class="navList__route"><a href="{% url 'komponentkeeperapp:login' %}">Login</a></li>   
+                <li class="nav-list-item"><a href="{% url 'komponentkeeperapp:login' %}">Login</a></li>   
             {% endif %}
 
         </ol>
