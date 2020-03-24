@@ -26,19 +26,19 @@ def components_list(request):
         return render(request, template, context)
         
         pass
-    elif request.method == 'POST':
-        form_data = request.POST
+    # elif request.method == 'POST':
+    #     form_data = request.POST
         
-        new_component = Component(
-            creator_id = request.user.id,
-            name = form_data['name'],
-            image = upload_component(request),
-            description = form_data['description']
-        )
+    #     new_component = Component(
+    #         creator_id = request.user.id,
+    #         name = form_data['name'],
+    #         image = upload_component(request),
+    #         description = form_data['description']
+    #     )
 
-        print(new_component.name)
-        new_component.save()
-        return redirect(reverse('komponentkeeperapp:components'))
+    #     print(new_component.name)
+    #     new_component.save()
+    #     return redirect(reverse('komponentkeeperapp:components'))
     
     
     

@@ -24,29 +24,33 @@ def upload_component(request):
     else:
         form = AddImageForm()
     context['form'] = form
-    return render(request, 'components/form.html', context)
+    return render(request, 'components/add_component_form.html', context)
 
 def edit_component_form(request, component_id):
     context = {}
+    # Get the instance of the component
+    component_to_edit = get_component(component_id)
+
     if request.method == 'GET':
-        # Get the instance of the component
-        component_to_edit = get_component(component_id)
-        print(component_to_edit.id)
-
         # Instantiate the new form, passing in the instance to edit
-        form = EditComponentForm(request.POST, request.FILES, instance=component_to_edit)
+        form = EditComponentForm(instance=component_to_edit)
+        print('ERORRS FORM ***********$$$$$$$$*******$$$$$$$$******$$$$$$$**$**$**$**$**$*$*', form.errors)
+        context['form'] = form
+        return render(request, 'components/edit_component_form.html', context)
 
+    if request.method == 'POST':
+        form = EditComponentForm(request.POST, instance=component_to_edit)
         if form.is_valid():
             print('we valid homie')
             form = form.save(commit=False)
             form.save()
             context['form'] = form
-            return render(request, 'components/form.html', context)
+            return redirect('komponentkeeperapp:success')
             pass
     
     else:
         form = EditComponentForm()
-        return fail()
+        return fail(request)
     
     context['form'] = form
-    return render(request, 'components/form.html', context)
+    return render(request, 'components/edit_component_form.html', context)
