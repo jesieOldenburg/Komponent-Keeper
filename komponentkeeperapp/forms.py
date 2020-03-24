@@ -5,6 +5,8 @@ class AddImageForm(ModelForm):
     class Meta:
         model = Component
         fields = ['name', 'image', 'description']
-    # name = forms.TextInput()
-    # image = forms.ImageField()
-    # description = forms.Textarea()
+
+class EditComponentForm(ModelForm):
+    class Meta:
+        model = Component
+        fields = ['name', 'image', 'description']

@@ -10,7 +10,7 @@
         <div class="component-card">
             <h3 class="card-heading">{{component.name}}</h3>
             <div class="img-container">
-                <img src="{{component.image}}" alt="A component" class="component-img">
+                <img src="{{component.image.url}}" alt="A component" class="component-img">
             </div>
             <p class="created-by">{{component.creator.first_name}}</p>
             <a href="{% url 'komponentkeeperapp:component' component.id %}">View Details</a>

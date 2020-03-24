@@ -1,4 +1,28 @@
 {% extends 'shared/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/billboard.css' %}">
+{% endblock %}
+
+
 {% block content %}
-<h1>Komponent Keeper App</h1>
+<div class="billboard-container">
+    <div class="billboard">
+        <div class="billboard-row">
+            <div class="billboard-col">
+                <h1 class="billboard-header">Komponent Keeper</h1>
+                <p class="billboard-desc">
+                    made for DESIGNERS to store their UI components
+                </p>
+                <p class="billboard-desc">
+                    and for DEVELOPERS to blend their code with those elements
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 {% endblock content %}
