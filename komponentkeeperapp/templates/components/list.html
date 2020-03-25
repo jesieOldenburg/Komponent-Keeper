@@ -1,21 +1,50 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 {# fields to display component. name, image, description, creator. first_name, last_name#}
-{% block content %}
-    <h1>Components</h1>
-    <a href="{% url 'komponentkeeperapp:upload_component' %}">Add Komponent</a>
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/components/components.css' %}">
+  
+{% endblock %}
 
+{% block content %}
+    <h1 class="main-heading">Components</h1>
+    <p class="heading-description">
+        View your stored Komponents below, or add a new one.
+    </p>
+    <p class="heading-description">
+        Here you can view the details of a Komponent, then edit it's values, or delete it.
+    </p>
+
+
+    <a id="add-component-button" class="animated heartBeat" href="{% url 'komponentkeeperapp:upload_component' %}">+</a>
+    
+    <!-- <form action="{% url 'komponentkeeperapp:upload_component' %}" method="get">
+
+    </form> -->
+    <!-- <a href="{% url 'komponentkeeperapp:upload_component' %}">Add Komponent</a> -->
+
+    <div class="component-card-container">
     {% for component in all_components %}
-    <div class="container">
         <div class="component-card">
-            <h3 class="card-heading">{{component.name}}</h3>
+            <h3 class="card-heading">Komponent Name</h3>
+            <p class="component-card-name">{{component.name}}</p>
             <div class="img-container">
                 <img src="{{component.image.url}}" alt="A component" class="component-img">
             </div>
+            <h4 class="created-by">Created By</h4>
             <p class="created-by">{{component.creator.first_name}}</p>
-            <a href="{% url 'komponentkeeperapp:component' component.id %}">View Details</a>
+            
+            <!-- TODO Add animations to buttons -->
+            <form action="{% url 'komponentkeeperapp:component' component.id %}" method="get">
+                <button class="component-details-button" type="submit">View Details</button>
+            </form>
+            <!-- <a href="{% url 'komponentkeeperapp:component' component.id %}">View Details</a> -->
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 
     {% endblock content %}
+    {% block scripts %}
+    <script src="{% static 'js/animations.js' %}"></script>
+    {% endblock scripts %}

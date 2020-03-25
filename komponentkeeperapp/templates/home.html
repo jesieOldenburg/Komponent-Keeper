@@ -2,8 +2,10 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/billboard.css' %}">
-{% endblock %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/billboard.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/home.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
+    {% endblock %}
 
 
 {% block content %}
@@ -11,17 +13,27 @@
     <div class="billboard">
         <div class="billboard-row">
             <div class="billboard-col">
-                <h1 class="billboard-header">Komponent Keeper</h1>
-                <p class="billboard-desc">
-                    made for DESIGNERS to store their UI components
-                </p>
-                <p class="billboard-desc">
-                    and for DEVELOPERS to blend their code with those elements
-                </p>
+                <h1 class="main-heading">Komponent Keeper</h1>
+                <div class="billboard-description">
+                    <p class="heading-description">
+                        made for DESIGNERS to store their UI components
+                    </p>
+                    <p class="heading-description">
+                        and for DEVELOPERS to blend their code with those elements
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="auth-controls-row">
+    <div class="auth-controls-col">
+        <input class="auth-button" type="button" value="Login">
+        <input class="auth-button" type="button" value="Register">
+    </div>
+</div>
+
 
 
 

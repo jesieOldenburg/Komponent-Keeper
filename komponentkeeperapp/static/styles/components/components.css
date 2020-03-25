@@ -1,0 +1,63 @@
+.component-card-container {
+    display: flex;
+    margin-top:16pt;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.component-card {
+    /* Size Props */
+    width: 256pt;
+    /* Spacing props */
+    margin: 16pt;
+    padding: 8pt;
+    /* Appearance */
+    border: 1px solid var(--red-accent);
+    border-radius: 8px;
+    
+}
+
+.img-container{
+    height: 100px;
+    width: 100px;
+}
+
+.component-img {
+    width: 100px;
+    height: 100px;
+    background: cover;
+}
+
+.component-details-button{
+    height: 40pt;
+    width: 96pt;
+    border-radius: 8pt;
+    background-color:var(--green-accent) ;
+    color: var(--off-white);
+}
+
+#add-component-button {
+    /* Sizing  */
+    height: 64pt;
+    width: 64pt;
+    /* Position */
+    display:block;
+    position: fixed;
+    bottom: -4px;
+    right: 10px;
+    margin: 32pt 8pt;
+    /* Text Props */
+    line-height:80px;
+    text-align:center;
+    text-decoration:none;
+    font-size:48pt;
+    font-weight: bolder;
+    /* Appearance */
+    border-radius: 50%;
+    background:var(--red-accent) ;
+    color: var(--off-white);
+    opacity: 0.6;
+    /* animation-iteration-count: infinite; */
+}
+
+#add-component-button:hover {opacity: 1;}

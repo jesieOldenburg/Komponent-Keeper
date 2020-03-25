@@ -19,19 +19,14 @@ def component_details(request, component_id):
     # If there is no component id in code snippet
     print('were in the details')
     if request.method == 'GET':
-        CODE_TEST = None
-        CODE_TEST = get_snippet(component_id)
-        print('GET ----____----___')
-        if CODE_TEST is not None: # Why is this not evaluating to True? 
-
-            print('Inside True Condition')
-            
+        snippet_assigned = None
+        snippet_assigned = get_snippet(component_id)
+        if snippet_assigned is not None: # Why is this not evaluating to True? 
             snippet = get_snippet(component_id)
             # get snippet details
             snippet_language = snippet.snippet_language
             code_snippet = snippet.code_snippet
             description = snippet.description
-            print('SNIPPET============>>>>>', code_snippet)
 
             component = get_component(component_id)
             template = 'components/details.html'

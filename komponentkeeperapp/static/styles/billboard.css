@@ -1,10 +1,14 @@
 .billboard-container {
     height: 75%;
     width: 100%;
-    background-color: aqua;
+    /* background-color:var(--green-accent); */
 }
 
-.billboard-header{
-    font-family: 'Helvetica-Neue' sans-serif;
-    font-size: 68pt;
+.billboard {
+    height: 22rem;
+    padding: 8pt 0;
+}
+
+.billboard-row {
+
 }

@@ -6,6 +6,42 @@
     <meta charset="UTF-8"> 
     <title>Upload Component</title> 
 </head> 
+
+{% if snippet %}
+{% if snippet.id is not None %}
+<form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="post">
+{% else %}
+<form action="{% url 'komponentkeeperapp:snippets' %}" method="post">
+{% endif %}
+    
+  {% csrf_token %}
+
+  <fieldset>
+      <label for="snippet-language">Snippet Language</label>
+      <input id="snippet-language" type="text" name="snippet-language" value="{{ snippet.snippet_language }}">
+  </fieldset>
+  
+  <fieldset>
+      <label for="description">Leave a small description</label>
+      <textarea id="description" rows="5" cols="35" name="description" >{{ snippet.description }}</textarea>
+  </fieldset>
+
+  <fieldset>
+      <label for="snippet-input">Snippet</label>
+      <textarea id="snippet-input" rows="30" cols="75" name="snippet-input" > {{ snippet.code_snippet }} </textarea>
+  </fieldset>
+
+  
+  {% if snippet.id is not None %}
+  <input type="hidden" name="actual_method" value="PUT">
+  <input type="submit" value="Update" />
+  {% else %}
+  <input type="submit" value="Create" />
+  {% endif %}
+      
+</form>
+{% endif %}
+    
 <body> 
     <form method = "post" enctype="multipart/form-data"> 
         {% csrf_token %} 

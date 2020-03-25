@@ -16,7 +16,10 @@
     {% endif %}
         
       {% csrf_token %}
-
+        
+        <!-- {% if component.id is not None %} -->
+        <!-- {% endif %} -->
+            
       <fieldset>
           <label for="snippet-language">Snippet Language</label>
           <input id="snippet-language" type="text" name="snippet-language" value="{{ snippet.snippet_language }}">

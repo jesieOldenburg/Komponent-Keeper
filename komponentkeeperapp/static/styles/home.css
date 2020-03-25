@@ -1,0 +1,20 @@
+.auth-controls-row {
+    margin: 64pt 32pt 32pt 16pt;
+}
+
+.auth-controls-col {
+    display: flex;
+    /* justify-content: flex-start; */
+}
+
+.auth-button {
+    margin: 16pt 32pt 16pt 0pt;
+    padding: 0;
+    color: var(--white);
+    background-color: var(--green-accent);
+    height: 40pt;
+    width: 96pt;
+    border-radius: 8px;
+    text-align: center;
+    display: inline-block;
+}
