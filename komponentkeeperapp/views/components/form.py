@@ -19,15 +19,15 @@ def component_form(request):
 
         return render(request, template, context)
       
-# @login_required
-# def edit_component_form(request, component_id):
+@login_required
+def edit_component_form(request, component_id):
 
-#     if request.method == 'GET':
-#         component = get_component(component_id)
+    if request.method == 'GET':
+        component = get_component(component_id)
 
-#         template = 'components/form.html'
-#         context = {
-#             'component': component,
-#         }
+        template = 'components/form.html'
+        context = {
+            'component': component,
+        }
 
-#         return render(request, template, context)
+        return render(request, template, context)

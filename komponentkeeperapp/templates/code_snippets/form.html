@@ -8,7 +8,7 @@
   
   <body>
     <h1>Add a Snippet</h1>
-    
+    <h4>{{all_components.name}}test</h4>
     {% if snippet.id is not None %}
     <form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="post">
     {% else %}
@@ -31,8 +31,16 @@
       </fieldset>
 
       <fieldset>
-          <label for="snippet-input">Snippet</label>
+          <label for="snippet-input"></label>
           <textarea id="snippet-input" rows="30" cols="75" name="snippet-input" > {{ snippet.code_snippet }} </textarea>
+      </fieldset>
+
+      <fieldset>
+          <label for="cars">Choose an Associated Komponent</label>
+
+          <select id="components-dropdown">
+            <option value="{{components.name}}">{{components.name}}</option>
+          </select>
       </fieldset>
 
       

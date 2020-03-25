@@ -1,6 +1,6 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
-from komponentkeeperapp.models import CodeSnippet
+from komponentkeeperapp.models import CodeSnippet, Component
 from django.contrib.auth.decorators import login_required
 # from ...forms import AddComponentForm
 
@@ -19,7 +19,7 @@ def snippets_list(request):
 
         template = 'code_snippets/list.html'
         context = {
-            'all_snippets': all_snippets
+            'all_snippets': all_snippets,
         }
 
         # return the render method passing in request, template and context as params
@@ -29,7 +29,7 @@ def snippets_list(request):
     elif request.method == 'POST':
 
         form_data = request.POST
-        
+        # component_to_link = Component.objects.get(pk=request.component.id)
         new_snippet = CodeSnippet(
             creator_id = request.user.id,
             snippet_language = form_data['snippet-language'],

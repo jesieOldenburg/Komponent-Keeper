@@ -1,13 +1,13 @@
 {% load static %}
 
-<!DOCTYPE html> 
+<!-- <!DOCTYPE html> 
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8"> 
     <title>Upload Component</title> 
-</head> 
+</head>  -->
 
-{% if snippet %}
+<!-- {% if snippet %}
 {% if snippet.id is not None %}
 <form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="post">
 {% else %}
@@ -29,24 +29,24 @@
   <fieldset>
       <label for="snippet-input">Snippet</label>
       <textarea id="snippet-input" rows="30" cols="75" name="snippet-input" > {{ snippet.code_snippet }} </textarea>
-  </fieldset>
+  </fieldset> -->
 
   
-  {% if snippet.id is not None %}
+  <!-- {% if snippet.id is not None %}
   <input type="hidden" name="actual_method" value="PUT">
   <input type="submit" value="Update" />
   {% else %}
   <input type="submit" value="Create" />
-  {% endif %}
+  {% endif %} -->
       
-</form>
-{% endif %}
+<!-- </form>
+{% endif %} -->
     
-<body> 
+<!-- <body>  -->
     <form method = "post" enctype="multipart/form-data"> 
         {% csrf_token %} 
         {{ form.as_p}} 
         <button type="submit">Upload</button> 
     </form> 
-</body> 
-</html> 
+<!-- </body>  -->
+<!-- </html>  -->

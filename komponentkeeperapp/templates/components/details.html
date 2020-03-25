@@ -15,6 +15,19 @@
             <p class="created-by">{{component.creator.first_name}} {{component.creator.last_name}}</p>
         </div>
         
+        <!-- * WE ARE HERE  -->
+        <!-- <a href="{% url 'komponentkeeperapp:snippet_form' component.id %}" >Add a Snippet</a> -->
+
+        <form action="{% url 'komponentkeeperapp:snippet_form' %}" method="get">
+            <input type="hidden" value="{{component.id}}">
+            <button class="component-details-button" type="submit">ADD SNIPPET</button>
+        </form>
+        <!-- <form action="{% url 'komponentkeeperapp:snippet_form' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="POST">
+            <button>Add a snippet</button>
+        </form> -->
+
         <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">

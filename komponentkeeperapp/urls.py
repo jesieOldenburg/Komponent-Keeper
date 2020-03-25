@@ -17,9 +17,9 @@ urlpatterns = [
     path('fail', fail, name='fail'), 
     path('components/<int:component_id>/', component_details, name='component'),
     
+    path('snippets/form', snippet_form, name='snippet_form'),
     
     path('snippets/', snippets_list, name='snippets'),
-    path('snippets/form', snippet_form, name='snippet_form'),
     path('snippets/<int:code_snippet_id>/form', edit_snippet_form, name='edit_snippet_form'),
     path('snippets/<int:code_snippet_id>/', snippet_details, name='snippet'),
     

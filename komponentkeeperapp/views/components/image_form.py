@@ -22,9 +22,18 @@ def upload_component(request):
         form = AddImageForm(request.POST, request.FILES)
         
         if form.is_valid():
+            form_data = request.POST
             component = form.save(commit=False)
             component.creator_id = request.user.id
             component.save()
+
+            new_snippet = CodeSnippet.objects.create(
+                component_id = component.id,
+                snippet_language = form_data.get('snippet_language'),
+                code_snippet = form_data.get('code_snippet'),
+                description = form_data.get('description')
+            )
+
             return redirect('komponentkeeperapp:success')
     else:
         form = AddImageForm()

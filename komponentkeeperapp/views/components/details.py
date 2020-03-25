@@ -2,6 +2,7 @@ import sqlite3
 from django.shortcuts import render, redirect, reverse
 from komponentkeeperapp.models import Component, CodeSnippet
 from django.contrib.auth.decorators import login_required
+# from ..code_snippets.form import snippet_form
 
 def get_component(component_id):
     return Component.objects.get(pk=component_id)
@@ -17,7 +18,6 @@ def get_snippet(component_id):
 @login_required
 def component_details(request, component_id):
     # If there is no component id in code snippet
-    print('were in the details')
     if request.method == 'GET':
         snippet_assigned = None
         snippet_assigned = get_snippet(component_id)
@@ -61,7 +61,7 @@ def component_details(request, component_id):
             # and save the changes to the database
             component_to_edit.save()
 
-            return redirect(reverse('komponentkeeperapp:components'))
+            return redirect(reverse('komponentkeeperapp:snippet_form'))
 
         # if the POST is a DELETE request...
         if (
