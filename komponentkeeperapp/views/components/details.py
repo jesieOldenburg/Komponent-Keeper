@@ -8,11 +8,23 @@ def get_component(component_id):
     return Component.objects.get(pk=component_id)
     pass
 
-def get_snippet(component_id):
+def get_snippet(component_id, snippet_id=None):
     if CodeSnippet.objects.filter(component=component_id).exists(): # This evaluates to True
         return CodeSnippet.objects.filter(component=component_id) # And this returns
     else:
         return None
+
+# def edit_snippet_form(request, code_snippet_id):
+
+#     if request.method == 'GET':
+#         snippet = get_snippet(code_snippet_id)
+
+#         template = 'code_snippets/form.html'
+#         context = {
+#             'snippet': snippet,
+#         }
+
+#         return render(request, template, context)
 
 @login_required
 def component_details(request, component_id):

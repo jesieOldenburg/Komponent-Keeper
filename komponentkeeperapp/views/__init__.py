@@ -5,7 +5,8 @@ from .components.image_form import upload_component, success, edit_component_for
 
 from .code_snippets.list import snippets_list
 from .code_snippets.details import snippet_details
-from .code_snippets.form import snippet_form, edit_snippet_form
+from .code_snippets.form import snippet_form 
+from .code_snippets.edit_snippet_form import edit_snippet_form 
 
 from .home import home
 from .auth.register import register_user

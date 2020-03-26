@@ -30,13 +30,12 @@
 <div class="auth-controls-row">
     <div class="auth-controls-col">
         
-        <form action="{% url 'komponentkeeperapp:register' %}" method="post">
+        <form action="{% url 'komponentkeeperapp:register' %}" >
             {% csrf_token %}
             <input class="auth-button" type="hidden" >
             <button class="auth-button" type="submit">Register</button>
         </form>
         
-        <input class="auth-button" type="button" value="Login">
     </div>
 </div>
 

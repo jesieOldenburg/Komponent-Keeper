@@ -4,9 +4,10 @@ from django.contrib.auth.decorators import login_required
 from komponentkeeperapp.models import Component
 
 @login_required
-def components_list(request):
+def components_list(request, pk=None):
     # Check if the request made is a GET request
     if request.method == 'GET':
+        pk = None
         # Assign all of the requested items to a variable
         all_components = Component.objects.all()
         
@@ -14,7 +15,6 @@ def components_list(request):
         name = request.GET.get('name')
         creator = request.GET.get('creator')
         image = request.GET.get('image')
-        print(image)
         description = request.GET.get('description')
         
         template = 'components/list.html'
