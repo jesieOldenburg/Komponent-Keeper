@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from komponentkeeperapp.models import Component, CodeSnippet
+from komponentkeeperapp.models import Component, CodeSnippet, Creator
 from .details import get_snippet, get_component
 from ...forms import AddImageForm, EditComponentForm
 from django.contrib.auth.decorators import login_required
@@ -16,6 +16,7 @@ def fail(request):
     return HttpResponseRedirect(reverse('FAILED POST REQUEST'))
 
 def upload_component(request):
+    creatorId = Creator.objects.get(user_id=request.user.id)
     context = {}
     if request.method == 'POST':
         context = {}
@@ -24,7 +25,7 @@ def upload_component(request):
         if form.is_valid():
             form_data = request.POST
             component = form.save(commit=False)
-            component.creator_id = request.user.id
+            component.creator_id = creatorId.id
             component.save()
 
             new_snippet = CodeSnippet.objects.create(

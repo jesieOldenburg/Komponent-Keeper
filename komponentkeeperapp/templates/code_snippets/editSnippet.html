@@ -9,9 +9,6 @@
   <body>
     {% comment %} {% if s.id is not None %} {% endcomment %}
     <form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="post">
-    {% comment %} {% else %}
-    <form action="{% url 'komponentkeeperapp:snippets' component.id %}" method="post">
-    {% endif %} {% endcomment %}
         
       {% csrf_token %}
             

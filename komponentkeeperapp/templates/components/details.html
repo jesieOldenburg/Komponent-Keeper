@@ -55,13 +55,19 @@
                             </pre>
                             <p class="snippet-desc">{{s.description}}</p>
                     </div>
-                    <!-- ! WORKING -->
+
                     <form action="{% url 'komponentkeeperapp:edit_snippet_form' s.id %}" >
                         {% csrf_token %}
                         <input type="hidden" >
                         <button class="edit-snippet-button" type="submit">EDIT SNIPPET</button>
                     </form>
-                    <!-- ! WORKING -->
+                    {% comment %} DELETE SNIPPET {% endcomment %}
+                    <form action="{% url 'komponentkeeperapp:snippet' s.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="actual_method" value="DELETE">
+                        <button>Delete Snippet</button>
+                    </form>
+                    
                 {% endif %}
             {% endfor %}
     

@@ -27,8 +27,8 @@ urlpatterns = [
     # Snippet related routes
     path('snippets/<int:component_id>/form', snippet_form, name='snippet_form'), # * Added <int:component_id>    
     path('snippets/<int:component_id>', snippets_list, name='snippets'), 
-    # path('snippets/<int:snippet_id>/form', edit_snippet_form, name='edit_snippet_form'),
+    path('snippets/<int:snippet_id>/form', edit_snippet_form, name='edit_snippet_form'),
     path('snippets/<int:snippet_id>/editSnippet', edit_snippet_form, name='edit_snippet_form'),
-    path('snippets/<int:code_snippet_id>/', snippet_details, name='snippet'),
+    path('snippets/<int:snippet_id>/', snippet_details, name='snippet'),
     
 ]

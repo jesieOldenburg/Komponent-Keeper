@@ -31,7 +31,7 @@ def snippet_form(request, component_id):
         form_data = request.POST
         print('TEST ::::::::;;;;;;;;;;:::::::::', component_id)
         new_snippet = CodeSnippet.objects.create(
-            # component = Component.objects.get(pk=component_id), # ! Changed id to component_id
+            component = Component.objects.get(pk=component_id), # ! Changed id to component_id
             snippet_language = form_data.get('snippet_language'),
             code_snippet = form_data.get('code_snippet'),
             description = form_data.get('description')
