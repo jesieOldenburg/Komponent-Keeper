@@ -11,7 +11,7 @@ class CodeSnippet(models.Model):
         code_snippet: This will contain a code snippet for a component
         description: This will contain any notes about the snippet
     '''
-    component_id = models.ForeignKey("Component", on_delete=models.SET_NULL, null=True)
+    component = models.ForeignKey("Component", on_delete=models.SET_NULL, null=True)
     creator = models.ForeignKey('Creator',  on_delete=models.SET_NULL, null=True)
     snippet_language = models.CharField(max_length=50, default=None, null=True)
     code_snippet = models.TextField(max_length=500, null=True, blank=True)

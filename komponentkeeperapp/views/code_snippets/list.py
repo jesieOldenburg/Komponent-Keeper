@@ -1,11 +1,11 @@
 import sqlite3
 from django.shortcuts import render, redirect, reverse
-from komponentkeeperapp.models import CodeSnippet
+from komponentkeeperapp.models import CodeSnippet, Component
 from django.contrib.auth.decorators import login_required
 # from ...forms import AddComponentForm
 
 @login_required
-def snippets_list(request):
+def snippets_list(request, component_id):
     # Check if the request made is a GET request
     if request.method == 'GET':
         # Assign all of the requested items to a variable
@@ -19,7 +19,7 @@ def snippets_list(request):
 
         template = 'code_snippets/list.html'
         context = {
-            'all_snippets': all_snippets
+            'all_snippets': all_snippets,
         }
 
         # return the render method passing in request, template and context as params
@@ -27,18 +27,19 @@ def snippets_list(request):
         
     # Create a New Snippet
     elif request.method == 'POST':
-
+        print('WE __________-------______ POSTED +++++---------___________-----______')
         form_data = request.POST
-        
+        component_to_link = Component.objects.get(pk=component_id)
         new_snippet = CodeSnippet(
             creator_id = request.user.id,
+            component_id = component_to_link.id,
             snippet_language = form_data['snippet-language'],
             code_snippet = form_data['snippet-input'],
             description = form_data['description']
         )
 
         new_snippet.save()
-        return redirect(reverse('komponentkeeperapp:snippets'))
+        return redirect(reverse('komponentkeeperapp:components'))
     
 # def component_image_upload(request):
 #     # Post an image to the database

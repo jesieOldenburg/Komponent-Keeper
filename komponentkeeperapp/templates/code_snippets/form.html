@@ -8,19 +8,20 @@
   
   <body>
     <h1>Add a Snippet</h1>
-    
+    <p>{{component.id}}</p>
     {% if snippet.id is not None %}
     <form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="post">
     {% else %}
-    <form action="{% url 'komponentkeeperapp:snippets' %}" method="post">
+    <form action="{% url 'komponentkeeperapp:snippets' component.id %}" method="post">
     {% endif %}
         
       {% csrf_token %}
+            
 
       <fieldset>
           <label for="snippet-language">Snippet Language</label>
           <input id="snippet-language" type="text" name="snippet-language" value="{{ snippet.snippet_language }}">
-      </fieldset>
+      </fieldset> 
       
       <fieldset>
           <label for="description">Leave a small description</label>
@@ -28,8 +29,16 @@
       </fieldset>
 
       <fieldset>
-          <label for="snippet-input">Snippet</label>
+          <label for="snippet-input"></label>
           <textarea id="snippet-input" rows="30" cols="75" name="snippet-input" > {{ snippet.code_snippet }} </textarea>
+      </fieldset>
+
+      <fieldset>
+          <label for="cars">Choose an Associated Komponent</label>
+
+          <select id="components-dropdown">
+            <option value="{{components.name}}">{{components.name}}</option>
+          </select>
       </fieldset>
 
       
@@ -37,6 +46,7 @@
       <input type="hidden" name="actual_method" value="PUT">
       <input type="submit" value="Update" />
       {% else %}
+      <input type="hidden" name="actual_method" value="PUT">
       <input type="submit" value="Create" />
       {% endif %}
           
@@ -48,7 +58,7 @@
 
 
 
-<!-- <!DOCTYPE html> 
+{% comment %} <!-- <!DOCTYPE html> 
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8"> 
@@ -62,4 +72,4 @@
         <button type="submit">Upload</button> 
     </form> 
 </body> 
-</html>  -->
+</html>  --> {% endcomment %}
