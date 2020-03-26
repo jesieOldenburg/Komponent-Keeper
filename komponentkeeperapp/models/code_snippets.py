@@ -15,7 +15,7 @@ class CodeSnippet(models.Model):
     creator = models.ForeignKey('Creator',  on_delete=models.SET_NULL, null=True)
     snippet_language = models.CharField(max_length=50, default=None, null=True)
     code_snippet = models.TextField(max_length=500, null=True, blank=True)
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=200, null=True, blank=True)
     
     class Meta:
         verbose_name = ("CodeSnippet")

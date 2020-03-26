@@ -27,12 +27,6 @@
                 <button class="component-details-button" type="submit">ADD SNIPPET</button>
             </form>
 
-            <!-- ! WORKING -->
-            {% comment %} <form action="{% url 'komponentkeeperapp:edit_snippet_form' snippet.id %}" method="post">
-                <input type="hidden" >
-                <button class="edit-snippet-button" type="submit">EDIT SNIPPET</button>
-            </form> {% endcomment %}
-            <!-- ! WORKING -->
 
             <!-- * DELETE Component Button -->
             <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
@@ -54,12 +48,20 @@
                 <div class="no-snippet"></div>
                 {% else %}
                     <div class="snippet-card">
+                    <h2>SNIPPET ID {{s.id}}</h2>
                         <h3 class="snippet-card-heading">{{s.snippet_language}}</h3>
                             <pre class="prettyprint lang-{{s.snippet_language|lower}}">
                                 <p class="pre-snippet">{{s.code_snippet}}</p>
                             </pre>
                             <p class="snippet-desc">{{s.description}}</p>
                     </div>
+                    <!-- ! WORKING -->
+                    <form action="{% url 'komponentkeeperapp:edit_snippet_form' s.id %}" >
+                        {% csrf_token %}
+                        <input type="hidden" >
+                        <button class="edit-snippet-button" type="submit">EDIT SNIPPET</button>
+                    </form>
+                    <!-- ! WORKING -->
                 {% endif %}
             {% endfor %}
     

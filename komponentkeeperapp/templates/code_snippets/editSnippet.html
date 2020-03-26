@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add a snippet</title>
+  </head>
+  
+  <body>
+    {% comment %} {% if s.id is not None %} {% endcomment %}
+    <form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="post">
+    {% comment %} {% else %}
+    <form action="{% url 'komponentkeeperapp:snippets' component.id %}" method="post">
+    {% endif %} {% endcomment %}
+        
+      {% csrf_token %}
+            
+
+      <fieldset>
+          <label for="snippet-language">Snippet Language</label>
+          <input id="snippet-language" type="text" name="snippet-language" value="{{ snippet.snippet_language }}">
+      </fieldset> 
+      
+      <fieldset>
+          <label for="description">Leave a small description</label>
+          <textarea id="description" rows="5" cols="35" name="description" >{{ snippet.description }}</textarea>
+      </fieldset>
+
+      <fieldset>
+          <label for="snippet-input">Type your Code Below</label>
+          <textarea id="snippet-input" rows="30" cols="75" name="snippet-input" > {{ snippet.code_snippet }} </textarea>
+      </fieldset>
+
+      <input type="hidden" name="actual_method" value="PUT">
+      <input type="submit" value="Update" />
+          
+    </form>
+  </body>
+</html>

@@ -11,40 +11,43 @@ def get_snippets():
 
 # @login_required
 def snippet_form(request, component_id):
-    print('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*************************', component_id)
+    """This View method will retrieve the snippet form for adding, and editing the snippets
+    """
+
     if request.method == 'GET':
+        print('COMPONENT ID ::::::::::::::     :::::::::::', component_id)
         # snippets = get_snippets()
         component = Component.objects.get(pk=component_id)
         # components = Component.objects.all()
         template = 'code_snippets/form.html'
         context = {
-            # 'all_snippets': snippets
+            # 'all_snippets': snippets,
             'component': component
         }
         print('johns test *************************', component)
         return render(request, template, context)
-
+    
     elif request.method == 'POST':
         form_data = request.POST
-
+        print('TEST ::::::::;;;;;;;;;;:::::::::', component_id)
         new_snippet = CodeSnippet.objects.create(
-            component_id = Component.objects.get(pk=id),
+            # component = Component.objects.get(pk=component_id), # ! Changed id to component_id
             snippet_language = form_data.get('snippet_language'),
             code_snippet = form_data.get('code_snippet'),
             description = form_data.get('description')
         )
         print('WE ADDED *****************()()()()()()(')
-    return redirect(reverse('komponentkeeperapp:snippets'))
+    return redirect(reverse('komponentkeeperapp:components'))
 
 # @login_required
-def edit_snippet_form(request, code_snippet_id):
+# def edit_snippet_form(request, code_snippet_id):
 
-    if request.method == 'GET':
-        snippet = get_snippet(code_snippet_id)
+#     if request.method == 'GET':
+#         snippet = get_snippet(code_snippet_id)
 
-        template = 'code_snippets/form.html'
-        context = {
-            'snippet': snippet,
-        }
+#         template = 'code_snippets/form.html'
+#         context = {
+#             'snippet': snippet,
+#         }
 
-        return render(request, template, context)
+#         return render(request, template, context)
