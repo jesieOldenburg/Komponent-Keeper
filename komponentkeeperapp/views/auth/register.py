@@ -11,6 +11,16 @@ def register_user(request):
         request = full http object
     """
 
+    if request.method == 'GET':
+        creator = Creator.objects.all()
+
+        template = 'registration/register.html'
+        context = {
+            'creators': creator
+        }
+
+        return render(request, template, context)
+
     # For handling when user submits the form data
     if request.method == "POST":
         # Create the instance of a new AUTH_USER
@@ -24,16 +34,12 @@ def register_user(request):
         # Then store that AUTH_USER object inside of creator
         creator = Creator.objects.create(
             user=new_user,
-            username=request.POST['username'],
-            first_name=request.POST['first_name'],
-            last_name=request.POST['last_name'],
-            email=request.POST['email']
         )
 
         login(request, new_user)
 
         # Redirect the browser to wherever you want to go after registering
-        return redirect(reverse('komponentkeeperapp:home'))
+        return redirect(reverse('komponentkeeperapp:components'))
 
     # handles a request to load the empty form for the useer to fill out
     else:

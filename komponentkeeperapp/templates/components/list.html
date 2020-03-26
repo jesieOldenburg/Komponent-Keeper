@@ -16,13 +16,7 @@
         Here you can view the details of a Komponent, then edit it's values, or delete it.
     </p>
 
-
     <a id="add-component-button" class="animated bounceIn" href="{% url 'komponentkeeperapp:upload_component' %}">+</a>
-    
-    <!-- <form action="{% url 'komponentkeeperapp:upload_component' %}" method="get">
-
-    </form> -->
-    <!-- <a href="{% url 'komponentkeeperapp:upload_component' %}">Add Komponent</a> -->
 
     <div class="component-card-container">
     {% for component in all_components %}

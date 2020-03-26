@@ -20,7 +20,7 @@
         <ol class="nav-list">
             <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:home' %}">Home</a></li>
             <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:components' %}">Components</a></li>
-            <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:snippets' %}">Snippets</a></li>
+            <!-- <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:components' %}">Snippets</a></li>  -->
 
             {% if user.is_authenticated %}
                 <li class="nav-list-item"><a href="{% url 'komponentkeeperapp:logout' %}">Logout</a></li>  

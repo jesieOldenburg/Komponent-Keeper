@@ -1,5 +1,5 @@
 from .components.list import components_list
-from .components.details import component_details
+from .components.details import component_details# * remove add snippet
 from .components.form import component_form
 from .components.image_form import upload_component, success, edit_component_form, fail, edit_success
 
