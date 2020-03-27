@@ -1,46 +1,61 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 {# fields to display component. name, image, description, creator. first_name, last_name#}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/components/components.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/components/snippets.css' %}">
+{% endblock %}
 
 {% block content %}
-    <h1>SNIPPET {{snippet.code_snippet}}</h1>
 
-    <a id="component-detail-back-button" class="animated bounceIn" href="{% url 'komponentkeeperapp:components' %}"> <- </a>
+    <a id="component-detail-back-button" class="animated bounceIn" href="{% url 'komponentkeeperapp:components' %}"> < </a>
     
-        <div class="component-card">
-            <h3 class="card-heading">{{component.name}}</h3>
-            <div class="img-container">
-                <img src="{{component.image.url}}" alt="A component" class="component-img">
+        <div class="component-detail-container">
+        <div class="component-detail-row">
+            <div id="component-detail-col-one">
+                <h3 id="detail-view-main-heading">{{component.name}}</h3>
+                <div class="detail-img-container">
+                    <img src="{{component.image.url}}" alt="A component" class="detail-component-img">
+                </div>
             </div>
-            <h5 class="created-by-heading">Created By</h5>
-            <p class="created-by">{{component.creator.first_name}} {{component.creator.last_name}}</p>
-            <h5 class="component-description-heading">Description</h5>
-                <p class="component-description">
+            <div id="component-detail-col-two">
+                <h4 class="detail-heading">Description</h4>
+                <p class="detail-component-description">
                     {{component.description}}
                 </p>
+                <h4 class="detail-heading">Created By</h4>
+                <p class="created-by">{{component.creator.first_name}} {{component.creator.last_name}}</p>
+            </div>
+        </div>
         </div>
         
-        <div class="buttons-container">
-            <!-- *Add snippet button -->
-            <form action="{% url 'komponentkeeperapp:snippet_form' component.id %}" method="get">
-                <input type="hidden" value="{{component.id}}">
-                <button class="component-details-button" type="submit">ADD SNIPPET</button>
-            </form>
-
-
-            <!-- * DELETE Component Button -->
-            <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="actual_method" value="DELETE">
-                <button>Delete Komponent</button>
-            </form>
-
-            <!-- * EDIT Component Button -->
-            <form action="{% url 'komponentkeeperapp:edit_component_form' component.id %}" method="GET">
-                {% csrf_token %}
-                <button>Edit</button>
-            </form>
-        </div>
+        <div class="controls-container">
+            <div class="controls-row">
+                <div class="controls-col">
+                    <!-- *Add snippet button -->
+                    <form action="{% url 'komponentkeeperapp:snippet_form' component.id %}" method="get">
+                        <input type="hidden" value="{{component.id}}">
+                        <button class="details-button" type="submit">Add Snippet</button>
+                    </form>
+                </div>
+                <div class="controls-col">
+                    <!-- * DELETE Component Button -->
+                    <form action="{% url 'komponentkeeperapp:component' component.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="actual_method" value="DELETE">
+                        <button class="details-button">Delete Komponent</button>
+                    </form>
+                </div>
+                <div class="controls-col">
+                    <!-- * EDIT Component Button -->
+                    <form action="{% url 'komponentkeeperapp:edit_component_form' component.id %}" method="GET">
+                        {% csrf_token %}
+                        <button class="details-button">Edit Komponent</button>
+                    </form>
+                </div>
+                </div>
+            </div>
 
 
             {% for s in snippet %}
@@ -48,31 +63,41 @@
                 <div class="no-snippet"></div>
                 {% else %}
                     <div class="snippet-card">
-                    <h2>SNIPPET ID {{s.id}}</h2>
-                        <h3 class="snippet-card-heading">{{s.snippet_language}}</h3>
+                        <h3 class="snippet-heading">Snippet Language</h3>
+                        <p class="snippet-language">{{s.snippet_language}}</p>
                             <pre class="prettyprint lang-{{s.snippet_language|lower}}">
-                                <p class="pre-snippet">{{s.code_snippet}}</p>
+                                {{s.code_snippet}}
                             </pre>
                             <p class="snippet-desc">{{s.description}}</p>
                     </div>
 
-                    <form action="{% url 'komponentkeeperapp:edit_snippet_form' s.id %}" >
-                        {% csrf_token %}
-                        <input type="hidden" >
-                        <button class="edit-snippet-button" type="submit">EDIT SNIPPET</button>
-                    </form>
-                    {% comment %} DELETE SNIPPET {% endcomment %}
-                    <form action="{% url 'komponentkeeperapp:snippet' s.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="actual_method" value="DELETE">
-                        <button>Delete Snippet</button>
-                    </form>
-                    
+
+                    <div class="snippet-controls-container">
+                        <div class="controls-row">
+                            <div class="controls-col">
+                                <form action="{% url 'komponentkeeperapp:edit_snippet_form' s.id %}" >
+                                    {% csrf_token %}
+                                    <input type="hidden" >
+                                    <button id="scroll-to-position" class="details-button" type="submit">EDIT SNIPPET</button>
+                                </form>
+                            </div>
+
+                            <div class="controls-col">
+                                <form action="{% url 'komponentkeeperapp:snippet' s.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="actual_method" value="DELETE">
+                                    <button class="details-button">Delete Snippet</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
                 {% endif %}
             {% endfor %}
     
     </div>
 
+   
 
 
     {% endblock content %}

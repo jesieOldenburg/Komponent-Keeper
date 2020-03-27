@@ -1,5 +1,5 @@
 console.log('animations is here');
-let addComponentButton = document.querySelector('#add-component-button')
+// let addComponentButton = document.querySelector('#add-component-button')
 
 
 /*
@@ -12,7 +12,6 @@ addComponentButton.addEventListener('mouseover', (e) =>{
     // Remove the initial Class from the node
     addComponentButton.classList.remove('bounceIn')
     addComponentButton.classList.add('heartBeat')
-    // void addComponentButton.offsetWidth
 })
 /*
 3. Then the mouseout clones the Button
@@ -21,9 +20,18 @@ addComponentButton.addEventListener('mouseover', (e) =>{
 
 addComponentButton.addEventListener('mouseout', (e) =>{
     let newButton = addComponentButton.cloneNode(true)
-    console.log(newButton);
+//     console.log(newButton);
     addComponentButton.parentNode.replaceChild(newButton, addComponentButton)
-    addComponentButton.classList.remove('bounceIn')
+    // addComponentButton.classList.remove('bounceIn')
     addComponentButton.classList.add('heartBeat')
-    // addComponentButton.classList.add('heartBeat')
 })
+
+// Scroll to logic
+
+const scrollToButton = document.querySelector('#scroll-to-position')
+console.log(scrollToButton);
+const triggerScroll = (e) => {
+    window.location.hash = scrollToButton
+    window.scroll(horizontalOffset, verticalOffset);
+}
+scrollToButton.addEventListener(e,  )

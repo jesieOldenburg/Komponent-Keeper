@@ -1,36 +1,50 @@
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Add a snippet</title>
-  </head>
-  
-  <body>
-    {% comment %} {% if s.id is not None %} {% endcomment %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/forms.css' %}">
+{% endblock %}  
+
+    <h1 class="form-heading">Edit Current Snippet</h1>
+
     <form action="{% url 'komponentkeeperapp:snippet' snippet.id %}" method="post">
         
       {% csrf_token %}
             
-
-      <fieldset>
-          <label for="snippet-language">Snippet Language</label>
-          <input id="snippet-language" type="text" name="snippet-language" value="{{ snippet.snippet_language }}">
-      </fieldset> 
+      <div class="form-field-container">
+          <div class="form-row">
+              <fieldset>
+                  <div class="label-separation-row">
+                      <label class="form-labels" for="snippet-language">Edit The Snippet Language</label>
+                  </div>
+                  <div class="label-separation-row">
+                      <input id="snippet-language" type="text" name="snippet-language" value="{{ snippet.snippet_language }}">
+                  </div>
+              </fieldset> 
+          </div>
       
-      <fieldset>
-          <label for="description">Leave a small description</label>
-          <textarea id="description" rows="5" cols="35" name="description" >{{ snippet.description }}</textarea>
-      </fieldset>
+          <div class="form-row">
+              <fieldset>
+                <div class="label-separation-row">
+                    <label class="form-labels" for="description">Edit Your Description</label>
+                </div>
+                <div class="label-separation-row">
+                    <textarea id="description" rows="5" cols="35" name="description" >{{ snippet.description }}</textarea>
+                </div>
+              </fieldset>
+          </div>
 
-      <fieldset>
-          <label for="snippet-input">Type your Code Below</label>
-          <textarea id="snippet-input" rows="30" cols="75" name="snippet-input" > {{ snippet.code_snippet }} </textarea>
-      </fieldset>
-
+          <div class="form-row">
+              <fieldset>
+                <div class="label-separation-row">
+                    <label class="form-labels" for="snippet-input">Edit Your Existing Snippet</label>
+                </div>
+                <div class="label-separation-row">
+                    <textarea id="snippet-input" rows="30" cols="75" name="snippet-input" > {{ snippet.code_snippet }} </textarea>
+                </div>
+              </fieldset>
+          </div>
+    </div>
       <input type="hidden" name="actual_method" value="PUT">
-      <input type="submit" value="Update" />
+      <input class="form-submit-button" type="submit" value="Update" />
           
     </form>
-  </body>
-</html>

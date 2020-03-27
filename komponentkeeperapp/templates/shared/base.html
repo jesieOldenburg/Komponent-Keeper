@@ -23,14 +23,9 @@
             <!-- <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:components' %}">Snippets</a></li>  -->
 
             {% if user.is_authenticated %}
-                <li class="nav-list-item"><a href="{% url 'komponentkeeperapp:logout' %}">Logout</a></li>  
+                <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:logout' %}">Logout</a></li>  
             {% else %}
-            <form action="{% url 'komponentkeeperapp:login' %}" >
-                {% csrf_token %}
-                <input class="auth-button" type="hidden" >
-                <button class="auth-nav-button" type="submit">Login</button>
-            </form>
-                <!-- <li class="nav-list-item"><a href="{% url 'komponentkeeperapp:login' %}">Login</a></li>    -->
+                <li class="nav-list-item"><a class="nav-link" href="{% url 'komponentkeeperapp:login' %}">Login</a></li>   
             {% endif %}
 
         </ol>

@@ -35,13 +35,13 @@ body {
     text-decoration: none;
 }
 
-.nav-link>a:active {
+.nav-link:hover {
     color: var(--off-white);
     text-decoration: none;
 }
 
 .main-heading{
-    margin: 32pt 16pt 16pt 16pt;
+    margin: 8pt 16pt 16pt 16pt;
     font-family: 'Helvetica-Neue' sans-serif;
     font-size: 68pt;
     font-weight: 400;
