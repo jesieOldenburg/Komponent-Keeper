@@ -19,12 +19,15 @@ pre.prettyprint, code.prettyprint {
 }
 
 pre.prettyprint {
-	width: 95%;
-	margin: 1em auto;
-	padding: 1em;
-	white-space: pre-wrap;
+    width: 40%;
+    margin: 16pt;
+    padding: 1em;
+    white-space: pre-wrap;
 }
 
+.prettyprint{
+    font-size: 12pt;
+}
 
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE; } /* IE indents via margin-left */

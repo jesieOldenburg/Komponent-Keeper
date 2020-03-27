@@ -4,7 +4,6 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/components/components.css' %}">
-  
 {% endblock %}
 
 {% block content %}
@@ -20,14 +19,21 @@
 
     <div class="component-card-container">
     {% for component in user_components %}
-        <div class="component-card">
-            <h3 class="card-heading">Komponent Name</h3>
-            <p class="component-card-name">{{component.name}}</p>
-            <div class="img-container">
-                <img src="{{component.image.url}}" alt="A component" class="component-img">
+        <div class="component-card animated bounceInUp slower">
+            <div class="list-card-row">
+                <div class="list-card-col">
+                    <h3 class="card-heading">Komponent Name</h3>
+                    <p class="component-card-name">{{component.name}}</p>
+                    <div class="img-container">
+                        <img src="{{component.image.url}}" alt="A component" class="component-img">
+                    </div>
+                </div>
+
+                <div class="list-card-col">
+                    <h4 class="list-created-by">Created By</h4>
+                    <p class="list-created-by">{{component.creator.first_name}}</p>
+                </div>
             </div>
-            <h4 class="created-by">Created By</h4>
-            <p class="created-by">{{component.creator.first_name}}</p>
             
             <!-- TODO Add animations to buttons -->
             <form action="{% url 'komponentkeeperapp:component' component.id %}" method="get">

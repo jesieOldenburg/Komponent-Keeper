@@ -1,0 +1,45 @@
+:root {
+    --red-accent: #FE5F55;
+    --green-accent: #1B998B;
+    --dark-blue: #242F40;
+    --dark-grey: #878C8F;
+    --off-white: #E8F1F2;
+}
+
+.snippet-heading{
+    margin: 20.4pt 0pt 16pt 16pt;
+    font-size: 20pt;
+    font-weight: 400;
+    color: var(--dark-grey);
+}
+
+.snippet-language{
+    margin: -8pt 16pt 32pt 16pt;
+    text-transform: capitalize;
+    font-size: 16pt;
+}
+
+.snippet-desc{
+    margin: 0pt 0pt 16pt 16pt;
+    width: 32rem;
+    /* border: 1px solid blue; */
+    font-size: 14pt;
+    font-weight: 200;
+}
+
+.details-button {
+    margin: 16pt 32pt 16pt 0pt;
+    padding: 0;
+    color: var(--white);
+    background-color: var(--green-accent);
+    height: 40pt;
+    width: 96pt;
+    border-radius: 8px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12pt;
+}
+
+.snippet-controls-container{
+    margin-left: -9.5pt;
+}
