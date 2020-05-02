@@ -30,6 +30,7 @@ def snippets_list(request, component_id):
         print('WE __________-------______ POSTED +++++---------___________-----______')
         form_data = request.POST
         component_to_link = Component.objects.get(pk=component_id)
+        component_URL_id = component_to_link.id
         new_snippet = CodeSnippet(
             creator_id = request.user.id,
             component_id = component_to_link.id,
@@ -39,7 +40,7 @@ def snippets_list(request, component_id):
         )
 
         new_snippet.save()
-        return redirect(reverse('komponentkeeperapp:components'))
+        return redirect(reverse('komponentkeeperapp:component', kwargs={'component_id': component_URL_id})) # TODO: make this redirect to component detail view to see the newly added snippet.
     
 # def component_image_upload(request):
 #     # Post an image to the database

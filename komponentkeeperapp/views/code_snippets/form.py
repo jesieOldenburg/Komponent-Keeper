@@ -24,7 +24,7 @@ def snippet_form(request, component_id):
             # 'all_snippets': snippets,
             'component': component
         }
-        print('johns test *************************', component)
+
         return render(request, template, context)
     
     elif request.method == 'POST':
@@ -36,8 +36,7 @@ def snippet_form(request, component_id):
             code_snippet = form_data.get('code_snippet'),
             description = form_data.get('description')
         )
-        print('WE ADDED *****************()()()()()()(')
-    return redirect(reverse('komponentkeeperapp:components'))
+    return redirect(reverse('komponentkeeperapp:component_details')) # ! redirect back to the component detail
 
 # @login_required
 # def edit_snippet_form(request, code_snippet_id):
