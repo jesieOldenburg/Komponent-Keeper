@@ -1,8 +1,11 @@
 import sqlite3
+import pprint
 from django.shortcuts import render, redirect, reverse
-from komponentkeeperapp.models import CodeSnippet
+from komponentkeeperapp.models import CodeSnippet, Component
 from django.contrib.auth.decorators import login_required
 # from ...forms import AddComponentForm
+
+# pp = pprint.PrettyPrinter()
 
 def get_snippet(snippet_id):
     return CodeSnippet.objects.get(pk=snippet_id)
@@ -42,8 +45,11 @@ def snippet_details(request, snippet_id):
             "actual_method" in form_data
             and form_data["actual_method"] == "DELETE"
         ):
-                
+            # linked_component_id = Component.objects.get(pk=component_id).id
             snippet = CodeSnippet.objects.get(pk=snippet_id)
+            linked_component_id = snippet.component_id
             snippet.delete()
 
-            return redirect(reverse('komponentkeeperapp:components'))
+            
+
+            return redirect(reverse('komponentkeeperapp:component', kwargs={'component_id':linked_component_id })) # TODO: Make this redirect to the component detail view.

@@ -58,7 +58,7 @@ def component_details(request, component_id):
             return render(request, template, context)
 
     elif request.method == 'POST':
-        print('*******************^^^^^^^^^^^^^^^^^************POST in component details')
+        # print('*******************^^^^^^^^^^^^^^^^^************POST in component details')
         pass
         form_data = request.POST
 
